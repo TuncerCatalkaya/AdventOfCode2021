@@ -3,7 +3,6 @@ package main
 import (
 	"AdventOfCode2021/filereader"
 	"fmt"
-	"log"
 	"strconv"
 )
 
@@ -13,10 +12,7 @@ func main() {
 }
 
 func challenge1() {
-	lines, err := filereader.ReadLines("day1/input.txt")
-	if err != nil {
-		log.Fatalf("readLines: %s", err)
-	}
+	lines := filereader.ReadFile("day1/input.txt", "\r\n")
 
 	var sweepReport []int64
 
@@ -45,10 +41,7 @@ func challenge1() {
 }
 
 func challenge2() {
-	lines, err := filereader.ReadLines("day1/input.txt")
-	if err != nil {
-		log.Fatalf("readLines: %s", err)
-	}
+	lines := filereader.ReadFile("day1/input.txt", "\r\n")
 
 	var sweepReport []int64
 

@@ -1,26 +1,14 @@
 package filereader
 
 import (
-	"bufio"
 	"os"
+	"strings"
 )
 
-func ReadLines(path string) ([]string, error) {
-	file, err := os.Open(path)
+func ReadFile(path, split string) []string {
+	data, err := os.ReadFile(path)
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
-	defer func(file *os.File) {
-		err := file.Close()
-		if err != nil {
-			return
-		}
-	}(file)
-
-	var lines []string
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-	return lines, scanner.Err()
+	return strings.Split(string(data), split)
 }
