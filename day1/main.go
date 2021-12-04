@@ -6,15 +6,10 @@ import (
 	"strconv"
 )
 
+var sweepReport []int64
+
 func main() {
-	challenge1()
-	challenge2()
-}
-
-func challenge1() {
 	lines := filereader.ReadFile("day1/input.txt", "\r\n")
-
-	var sweepReport []int64
 
 	for i := range lines {
 		parseInt, err := strconv.ParseInt(lines[i], 10, 64)
@@ -24,6 +19,11 @@ func challenge1() {
 		sweepReport = append(sweepReport, parseInt)
 	}
 
+	puzzle1()
+	puzzle2()
+}
+
+func puzzle1() {
 	var counter int64 = 0
 	for i := 0; i < len(sweepReport); i++ {
 		if i+1 > len(sweepReport)-1 {
@@ -40,19 +40,7 @@ func challenge1() {
 	fmt.Println(counter)
 }
 
-func challenge2() {
-	lines := filereader.ReadFile("day1/input.txt", "\r\n")
-
-	var sweepReport []int64
-
-	for i := range lines {
-		parseInt, err := strconv.ParseInt(lines[i], 10, 64)
-		if err != nil {
-			return
-		}
-		sweepReport = append(sweepReport, parseInt)
-	}
-
+func puzzle2() {
 	var advancedSweepReport []int64
 	for i := 0; i < len(sweepReport); i++ {
 		if i+2 > len(sweepReport)-1 {
